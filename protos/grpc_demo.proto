@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package seismo;
+
+service SeismoService {
+    rpc SeismoPing (SeismoPingRequest) returns (SeismoPingReply) {}
+}
+
+message SeismoPingRequest {
+    string name = 1;
+}
+
+message SeismoPingReply {
+    string message = 1;
+}
