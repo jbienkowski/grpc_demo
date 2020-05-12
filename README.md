@@ -27,3 +27,14 @@ Demo gRPC project.
     ```
     $ python3 -m grpc_tools.protoc -I./protos --python_out=./client/grpc_classes --grpc_python_out=./client/grpc_classes ./protos/grpc_demo.proto
     ```
+
+# Sidenotes
+
+1. One of the imports in the `grpc_demo_pb2_grpc.py` gRPC file needs to be changed from:
+    ```
+    import grpc_demo_pb2 as grpc__demo__pb2
+    ```
+    to:
+    ```
+    from . import grpc_demo_pb2 as grpc__demo__pb2
+    ```
