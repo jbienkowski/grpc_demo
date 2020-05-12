@@ -6,6 +6,8 @@ import grpc
 from grpc_classes import grpc_demo_pb2
 from grpc_classes import grpc_demo_pb2_grpc
 
+import obspy
+
 
 class SeismoServer(grpc_demo_pb2_grpc.SeismoServiceServicer):
     def SeismoPing(self, request, context):
