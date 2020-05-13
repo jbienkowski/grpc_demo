@@ -28,6 +28,17 @@ Demo gRPC project.
     $ python3 -m grpc_tools.protoc -I./protos --python_out=./client/grpc_classes --grpc_python_out=./client/grpc_classes ./protos/grpc_demo.proto
     ```
 
+# Docker
+
+1. Build the gRPC server image using:
+    ```
+    $ docker build -t grpc .
+    ```
+1. Run the gRP server container using:
+    ```
+    $ docker run -p 127.0.0.1:50051:50051/tcp grpc:latest
+    ```
+
 # Sidenotes
 
 1. After rebuilding gRPC files, one of the imports in the `grpc_demo_pb2_grpc.py` needs to be changed from:

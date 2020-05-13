@@ -18,7 +18,7 @@ def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
     grpc_demo_pb2_grpc.add_SeismoServiceServicer_to_server(
         SeismoServer(), server)
-    server.add_insecure_port('127.0.0.1:50051')
+    server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
 
