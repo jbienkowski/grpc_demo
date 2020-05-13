@@ -34,7 +34,7 @@ Demo gRPC project.
     ```
     $ docker build -t grpc .
     ```
-1. Run the gRP server container using:
+1. Run the gRPC server container using:
     ```
     $ docker run -p 127.0.0.1:50051:50051/tcp grpc:latest
     ```
