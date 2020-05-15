@@ -6,6 +6,7 @@ service SeismoService {
     rpc SeismoPing (SeismoPingRequest) returns (SeismoPingReply) {}
 }
 
+// SeismoPing messages
 message SeismoPingRequest {
     string name = 1;
 }
