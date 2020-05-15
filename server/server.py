@@ -11,7 +11,9 @@ import obspy
 
 class SeismoServer(grpc_demo_pb2_grpc.SeismoServiceServicer):
     def SeismoPing(self, request, context):
-        return grpc_demo_pb2.SeismoPingReply(message=f'Hello, {request.name}!')
+        return grpc_demo_pb2.SeismoPingReply(
+            message=f'Hello, {request.name}!'
+        )
 
 
 def serve():
