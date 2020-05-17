@@ -32,15 +32,15 @@ Demo gRPC project.
 
 ## Rebuild gRPC classes
 
-1. Build classes for the server:
+1. Generate gRPC code for the server:
     ```
     $ python3 -m grpc_tools.protoc -I./protos --python_out=./server/grpc_classes --grpc_python_out=./server/grpc_classes ./protos/grpc_demo.proto
     ```
-1. Build the classes for the client:
+1. Generate gRPC code for the client:
     ```
     $ python3 -m grpc_tools.protoc -I./protos --python_out=./client/grpc_classes --grpc_python_out=./client/grpc_classes ./protos/grpc_demo.proto
     ```
-1. After rebuilding gRPC files, one of the imports in the `grpc_demo_pb2_grpc.py` needs to be changed from:
+1. After generating the gRPC code, one of the imports in the `grpc_demo_pb2_grpc.py` needs to be changed from:
     ```
     import grpc_demo_pb2 as grpc__demo__pb2
     ```
