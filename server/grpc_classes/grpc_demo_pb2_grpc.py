@@ -14,10 +14,10 @@ class SeismoServiceStub(object):
             channel: A grpc.Channel.
         """
         self.SeismoPing = channel.unary_unary(
-                '/seismo.SeismoService/SeismoPing',
-                request_serializer=grpc__demo__pb2.SeismoPingRequest.SerializeToString,
-                response_deserializer=grpc__demo__pb2.SeismoPingReply.FromString,
-                )
+            "/seismo.SeismoService/SeismoPing",
+            request_serializer=grpc__demo__pb2.SeismoPingRequest.SerializeToString,
+            response_deserializer=grpc__demo__pb2.SeismoPingReply.FromString,
+        )
 
 
 class SeismoServiceServicer(object):
@@ -26,39 +26,51 @@ class SeismoServiceServicer(object):
     def SeismoPing(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_SeismoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'SeismoPing': grpc.unary_unary_rpc_method_handler(
-                    servicer.SeismoPing,
-                    request_deserializer=grpc__demo__pb2.SeismoPingRequest.FromString,
-                    response_serializer=grpc__demo__pb2.SeismoPingReply.SerializeToString,
-            ),
+        "SeismoPing": grpc.unary_unary_rpc_method_handler(
+            servicer.SeismoPing,
+            request_deserializer=grpc__demo__pb2.SeismoPingRequest.FromString,
+            response_serializer=grpc__demo__pb2.SeismoPingReply.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'seismo.SeismoService', rpc_method_handlers)
+        "seismo.SeismoService", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class SeismoService(object):
     """Missing associated documentation comment in .proto file"""
 
     @staticmethod
-    def SeismoPing(request,
+    def SeismoPing(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/seismo.SeismoService/SeismoPing',
+            "/seismo.SeismoService/SeismoPing",
             grpc__demo__pb2.SeismoPingRequest.SerializeToString,
             grpc__demo__pb2.SeismoPingReply.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
