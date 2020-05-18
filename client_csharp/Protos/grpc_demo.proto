@@ -7,8 +7,8 @@ package seismo;
 
 service SeismoService {
     rpc SeismoPing (SeismoPingRequest) returns (SeismoPingReply) {}
-    rpc BiggestEventInDays (BiggestEventInDaysRequest) returns (BiggestEventResponse) {}
-    rpc BiggestEventOn (BiggestEventOnRequest) returns (BiggestEventResponse) {}
+    rpc BiggestEventInDays (BiggestEventInDaysRequest) returns (BiggestEventReply) {}
+    rpc BiggestEventOn (BiggestEventOnRequest) returns (BiggestEventReply) {}
 }
 
 // SeismoPing messages
@@ -24,7 +24,7 @@ message BiggestEventInDaysRequest {
     int32 days = 1;
 }
 
-message BiggestEventResponse {
+message BiggestEventReply {
     float magnitude = 1;
     float latitude = 2;
     float longitude = 3;

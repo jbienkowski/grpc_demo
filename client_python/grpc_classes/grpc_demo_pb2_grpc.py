@@ -21,12 +21,12 @@ class SeismoServiceStub(object):
         self.BiggestEventInDays = channel.unary_unary(
             "/seismo.SeismoService/BiggestEventInDays",
             request_serializer=grpc__demo__pb2.BiggestEventInDaysRequest.SerializeToString,
-            response_deserializer=grpc__demo__pb2.BiggestEventResponse.FromString,
+            response_deserializer=grpc__demo__pb2.BiggestEventReply.FromString,
         )
         self.BiggestEventOn = channel.unary_unary(
             "/seismo.SeismoService/BiggestEventOn",
             request_serializer=grpc__demo__pb2.BiggestEventOnRequest.SerializeToString,
-            response_deserializer=grpc__demo__pb2.BiggestEventResponse.FromString,
+            response_deserializer=grpc__demo__pb2.BiggestEventReply.FromString,
         )
 
 
@@ -62,12 +62,12 @@ def add_SeismoServiceServicer_to_server(servicer, server):
         "BiggestEventInDays": grpc.unary_unary_rpc_method_handler(
             servicer.BiggestEventInDays,
             request_deserializer=grpc__demo__pb2.BiggestEventInDaysRequest.FromString,
-            response_serializer=grpc__demo__pb2.BiggestEventResponse.SerializeToString,
+            response_serializer=grpc__demo__pb2.BiggestEventReply.SerializeToString,
         ),
         "BiggestEventOn": grpc.unary_unary_rpc_method_handler(
             servicer.BiggestEventOn,
             request_deserializer=grpc__demo__pb2.BiggestEventOnRequest.FromString,
-            response_serializer=grpc__demo__pb2.BiggestEventResponse.SerializeToString,
+            response_serializer=grpc__demo__pb2.BiggestEventReply.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -124,7 +124,7 @@ class SeismoService(object):
             target,
             "/seismo.SeismoService/BiggestEventInDays",
             grpc__demo__pb2.BiggestEventInDaysRequest.SerializeToString,
-            grpc__demo__pb2.BiggestEventResponse.FromString,
+            grpc__demo__pb2.BiggestEventReply.FromString,
             options,
             channel_credentials,
             call_credentials,
@@ -151,7 +151,7 @@ class SeismoService(object):
             target,
             "/seismo.SeismoService/BiggestEventOn",
             grpc__demo__pb2.BiggestEventOnRequest.SerializeToString,
-            grpc__demo__pb2.BiggestEventResponse.FromString,
+            grpc__demo__pb2.BiggestEventReply.FromString,
             options,
             channel_credentials,
             call_credentials,
