@@ -18,12 +18,34 @@ class SeismoServiceStub(object):
             request_serializer=grpc__demo__pb2.SeismoPingRequest.SerializeToString,
             response_deserializer=grpc__demo__pb2.SeismoPingReply.FromString,
         )
+        self.BiggestEventInDays = channel.unary_unary(
+            "/seismo.SeismoService/BiggestEventInDays",
+            request_serializer=grpc__demo__pb2.BiggestEventInDaysRequest.SerializeToString,
+            response_deserializer=grpc__demo__pb2.BiggestEventResponse.FromString,
+        )
+        self.BiggestEventOn = channel.unary_unary(
+            "/seismo.SeismoService/BiggestEventOn",
+            request_serializer=grpc__demo__pb2.BiggestEventOnRequest.SerializeToString,
+            response_deserializer=grpc__demo__pb2.BiggestEventResponse.FromString,
+        )
 
 
 class SeismoServiceServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def SeismoPing(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
+
+    def BiggestEventInDays(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
+
+    def BiggestEventOn(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
@@ -36,6 +58,16 @@ def add_SeismoServiceServicer_to_server(servicer, server):
             servicer.SeismoPing,
             request_deserializer=grpc__demo__pb2.SeismoPingRequest.FromString,
             response_serializer=grpc__demo__pb2.SeismoPingReply.SerializeToString,
+        ),
+        "BiggestEventInDays": grpc.unary_unary_rpc_method_handler(
+            servicer.BiggestEventInDays,
+            request_deserializer=grpc__demo__pb2.BiggestEventInDaysRequest.FromString,
+            response_serializer=grpc__demo__pb2.BiggestEventResponse.SerializeToString,
+        ),
+        "BiggestEventOn": grpc.unary_unary_rpc_method_handler(
+            servicer.BiggestEventOn,
+            request_deserializer=grpc__demo__pb2.BiggestEventOnRequest.FromString,
+            response_serializer=grpc__demo__pb2.BiggestEventResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,6 +98,60 @@ class SeismoService(object):
             "/seismo.SeismoService/SeismoPing",
             grpc__demo__pb2.SeismoPingRequest.SerializeToString,
             grpc__demo__pb2.SeismoPingReply.FromString,
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
+
+    @staticmethod
+    def BiggestEventInDays(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            "/seismo.SeismoService/BiggestEventInDays",
+            grpc__demo__pb2.BiggestEventInDaysRequest.SerializeToString,
+            grpc__demo__pb2.BiggestEventResponse.FromString,
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
+
+    @staticmethod
+    def BiggestEventOn(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            "/seismo.SeismoService/BiggestEventOn",
+            grpc__demo__pb2.BiggestEventOnRequest.SerializeToString,
+            grpc__demo__pb2.BiggestEventResponse.FromString,
             options,
             channel_credentials,
             call_credentials,

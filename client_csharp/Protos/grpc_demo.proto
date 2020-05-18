@@ -1,11 +1,14 @@
 syntax = "proto3";
 
+// Namespace definition for the C# client
 option csharp_namespace = "SeismoSrv";
 
 package seismo;
 
 service SeismoService {
     rpc SeismoPing (SeismoPingRequest) returns (SeismoPingReply) {}
+    rpc BiggestEventInDays (BiggestEventInDaysRequest) returns (BiggestEventResponse) {}
+    rpc BiggestEventOn (BiggestEventOnRequest) returns (BiggestEventResponse) {}
 }
 
 // SeismoPing messages
@@ -15,4 +18,20 @@ message SeismoPingRequest {
 
 message SeismoPingReply {
     string message = 1;
+}
+
+message BiggestEventInDaysRequest {
+    int32 days = 1;
+}
+
+message BiggestEventResponse {
+    float magnitude = 1;
+    float latitude = 2;
+    float longitude = 3;
+}
+
+message BiggestEventOnRequest {
+    int32 day = 1;
+    int32 month = 2;
+    int32 year = 3;
 }
