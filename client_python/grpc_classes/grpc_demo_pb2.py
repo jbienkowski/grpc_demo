@@ -16,8 +16,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     name="grpc_demo.proto",
     package="seismo",
     syntax="proto3",
-    serialized_options=None,
-    serialized_pb=b'\n\x0fgrpc_demo.proto\x12\x06seismo"!\n\x11SeismoPingRequest\x12\x0c\n\x04name\x18\x01 \x01(\t""\n\x0fSeismoPingReply\x12\x0f\n\x07message\x18\x01 \x01(\t2S\n\rSeismoService\x12\x42\n\nSeismoPing\x12\x19.seismo.SeismoPingRequest\x1a\x17.seismo.SeismoPingReply"\x00\x62\x06proto3',
+    serialized_options=b"\252\002\tSeismoSrv",
+    serialized_pb=b'\n\x0fgrpc_demo.proto\x12\x06seismo"!\n\x11SeismoPingRequest\x12\x0c\n\x04name\x18\x01 \x01(\t""\n\x0fSeismoPingReply\x12\x0f\n\x07message\x18\x01 \x01(\t2S\n\rSeismoService\x12\x42\n\nSeismoPing\x12\x19.seismo.SeismoPingRequest\x1a\x17.seismo.SeismoPingReply"\x00\x42\x0c\xaa\x02\tSeismoSrvb\x06proto3',
 )
 
 
@@ -124,6 +124,8 @@ SeismoPingReply = _reflection.GeneratedProtocolMessageType(
 )
 _sym_db.RegisterMessage(SeismoPingReply)
 
+
+DESCRIPTOR._options = None
 
 _SEISMOSERVICE = _descriptor.ServiceDescriptor(
     name="SeismoService",

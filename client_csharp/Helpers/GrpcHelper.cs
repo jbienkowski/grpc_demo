@@ -16,7 +16,9 @@ namespace gRPC.Helpers
         {
             var channel = GrpcChannel.ForAddress(ServerAddress);
             var client = new SeismoService.SeismoServiceClient(channel);
-            var reply = client.SeismoPing(new SeismoPingRequest() { Name = "C# Client" });
+            var request = new SeismoPingRequest();
+            request.Name = "C# Client";
+            var reply = client.SeismoPing(request);
             return reply.Message;
         }
     }
