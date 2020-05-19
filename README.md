@@ -4,9 +4,10 @@ Demo gRPC project.
 
 # Install Python virtual environment and dependencies
 
-1. Install virtual environment:
+1. Install and activate the virtual environment:
     ```
     $ python3 -m venv env
+    $ source env/bin/activate
     ```
 1. Install numpy (otherwise obspy installation will fail):
     ```
