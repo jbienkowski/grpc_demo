@@ -1,19 +1,26 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "preLaunchTask": "build-csharp-client",
-            "request": "launch",
-            "program": "${workspaceFolder}/client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/client_csharp",
-            "stopAtEntry": false,
-            "console": "internalConsole"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "preLaunchTask": "build-csharp-client",
+      "request": "launch",
+      "program": "${workspaceFolder}/client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll",
+      "args": ["--day", "2020", "01", "10"],
+      "cwd": "${workspaceFolder}/client_csharp",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
 }
