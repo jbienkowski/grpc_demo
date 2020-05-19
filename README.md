@@ -24,18 +24,34 @@ Demo gRPC project.
     $ python3 server/server.py
     ```
 1. Python client
-    ```
-    $ python3 client_python/client.py
-    ```
+    1. Ping server
+        ```
+        $ python3 client_python/client.py --ping
+        ```
+    1. Get biggest event in last 7 days
+        ```
+        $ python3 client_python/client.py --past 7
+        ```
+    1. Get biggest event that happened on 2020-01-21 [YYYY MM DD]
+        ```
+        $ python3 client_python/client.py --day 2020 01 021
+        ```
 1. C# client
-    
-    1. Build the C# client
+    1. Build the client
         ```
         $ dotnet build client_csharp/
         ```
-    1. Run the C# client
+    1. Ping server
         ```
-        $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll
+        $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll --ping
+        ```
+    1. Get biggest event in last 7 days
+        ```
+        $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll --past 7
+        ```
+    1. Get biggest event that happened on 2020-01-21 [YYYY MM DD]
+        ```
+        $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll --day 2020 01 21
         ```
 
 # Dockerized server
