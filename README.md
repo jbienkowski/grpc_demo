@@ -17,7 +17,28 @@ Demo gRPC project.
     $ pip install -r requirements.txt
     ```
 
-# Docker
+# Running the software (basic)
+
+1. Python server
+    ```
+    $ python3 server/server.py
+    ```
+1. Python client
+    ```
+    $ python3 client_python/client.py
+    ```
+1. C# client
+    
+    1. Build the C# client
+        ```
+        $ dotnet build client_csharp/
+        ```
+    1. Run the C# client
+        ```
+        $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll
+        ```
+
+# Dockerized server
 
 1. Build the gRPC server image using:
     ```
