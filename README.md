@@ -35,7 +35,7 @@ Demo gRPC project.
         ```
     1. Get biggest event that happened on 2020-01-21 [YYYY MM DD]
         ```
-        $ python3 client_python/client.py --day 2020 01 021
+        $ python3 client_python/client.py --day 2020 01 21
         ```
 1. C# client
     1. Build the client
