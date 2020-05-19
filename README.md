@@ -24,7 +24,7 @@ Demo gRPC project.
     ```
     $ python3 server/server.py
     ```
-1. Python client
+1. Python clients
     1. Ping server
         ```
         $ python3 client_python/client.py --ping
