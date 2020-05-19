@@ -17,7 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="seismo",
     syntax="proto3",
     serialized_options=b"\252\002\tSeismoSrv",
-    serialized_pb=b'\n\x0fgrpc_demo.proto\x12\x06seismo"!\n\x11SeismoPingRequest\x12\x0c\n\x04name\x18\x01 \x01(\t""\n\x0fSeismoPingReply\x12\x0f\n\x07message\x18\x01 \x01(\t2S\n\rSeismoService\x12\x42\n\nSeismoPing\x12\x19.seismo.SeismoPingRequest\x1a\x17.seismo.SeismoPingReply"\x00\x42\x0c\xaa\x02\tSeismoSrvb\x06proto3',
+    serialized_pb=b'\n\x0fgrpc_demo.proto\x12\x06seismo"!\n\x11SeismoPingRequest\x12\x0c\n\x04name\x18\x01 \x01(\t""\n\x0fSeismoPingReply\x12\x0f\n\x07message\x18\x01 \x01(\t")\n\x19\x42iggestEventInDaysRequest\x12\x0c\n\x04\x64\x61ys\x18\x01 \x01(\x05"K\n\x11\x42iggestEventReply\x12\x11\n\tmagnitude\x18\x01 \x01(\x02\x12\x10\n\x08latitude\x18\x02 \x01(\x02\x12\x11\n\tlongitude\x18\x03 \x01(\x02"A\n\x15\x42iggestEventOnRequest\x12\x0b\n\x03\x64\x61y\x18\x01 \x01(\x05\x12\r\n\x05month\x18\x02 \x01(\x05\x12\x0c\n\x04year\x18\x03 \x01(\x05\x32\xf7\x01\n\rSeismoService\x12\x42\n\nSeismoPing\x12\x19.seismo.SeismoPingRequest\x1a\x17.seismo.SeismoPingReply"\x00\x12T\n\x12\x42iggestEventInDays\x12!.seismo.BiggestEventInDaysRequest\x1a\x19.seismo.BiggestEventReply"\x00\x12L\n\x0e\x42iggestEventOn\x12\x1d.seismo.BiggestEventOnRequest\x1a\x19.seismo.BiggestEventReply"\x00\x42\x0c\xaa\x02\tSeismoSrvb\x06proto3',
 )
 
 
@@ -98,8 +98,202 @@ _SEISMOPINGREPLY = _descriptor.Descriptor(
     serialized_end=96,
 )
 
+
+_BIGGESTEVENTINDAYSREQUEST = _descriptor.Descriptor(
+    name="BiggestEventInDaysRequest",
+    full_name="seismo.BiggestEventInDaysRequest",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="days",
+            full_name="seismo.BiggestEventInDaysRequest.days",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=98,
+    serialized_end=139,
+)
+
+
+_BIGGESTEVENTREPLY = _descriptor.Descriptor(
+    name="BiggestEventReply",
+    full_name="seismo.BiggestEventReply",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="magnitude",
+            full_name="seismo.BiggestEventReply.magnitude",
+            index=0,
+            number=1,
+            type=2,
+            cpp_type=6,
+            label=1,
+            has_default_value=False,
+            default_value=float(0),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+        _descriptor.FieldDescriptor(
+            name="latitude",
+            full_name="seismo.BiggestEventReply.latitude",
+            index=1,
+            number=2,
+            type=2,
+            cpp_type=6,
+            label=1,
+            has_default_value=False,
+            default_value=float(0),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+        _descriptor.FieldDescriptor(
+            name="longitude",
+            full_name="seismo.BiggestEventReply.longitude",
+            index=2,
+            number=3,
+            type=2,
+            cpp_type=6,
+            label=1,
+            has_default_value=False,
+            default_value=float(0),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=141,
+    serialized_end=216,
+)
+
+
+_BIGGESTEVENTONREQUEST = _descriptor.Descriptor(
+    name="BiggestEventOnRequest",
+    full_name="seismo.BiggestEventOnRequest",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="day",
+            full_name="seismo.BiggestEventOnRequest.day",
+            index=0,
+            number=1,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+        _descriptor.FieldDescriptor(
+            name="month",
+            full_name="seismo.BiggestEventOnRequest.month",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+        _descriptor.FieldDescriptor(
+            name="year",
+            full_name="seismo.BiggestEventOnRequest.year",
+            index=2,
+            number=3,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=218,
+    serialized_end=283,
+)
+
 DESCRIPTOR.message_types_by_name["SeismoPingRequest"] = _SEISMOPINGREQUEST
 DESCRIPTOR.message_types_by_name["SeismoPingReply"] = _SEISMOPINGREPLY
+DESCRIPTOR.message_types_by_name[
+    "BiggestEventInDaysRequest"
+] = _BIGGESTEVENTINDAYSREQUEST
+DESCRIPTOR.message_types_by_name["BiggestEventReply"] = _BIGGESTEVENTREPLY
+DESCRIPTOR.message_types_by_name["BiggestEventOnRequest"] = _BIGGESTEVENTONREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 SeismoPingRequest = _reflection.GeneratedProtocolMessageType(
@@ -124,6 +318,39 @@ SeismoPingReply = _reflection.GeneratedProtocolMessageType(
 )
 _sym_db.RegisterMessage(SeismoPingReply)
 
+BiggestEventInDaysRequest = _reflection.GeneratedProtocolMessageType(
+    "BiggestEventInDaysRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BIGGESTEVENTINDAYSREQUEST,
+        "__module__": "grpc_demo_pb2"
+        # @@protoc_insertion_point(class_scope:seismo.BiggestEventInDaysRequest)
+    },
+)
+_sym_db.RegisterMessage(BiggestEventInDaysRequest)
+
+BiggestEventReply = _reflection.GeneratedProtocolMessageType(
+    "BiggestEventReply",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BIGGESTEVENTREPLY,
+        "__module__": "grpc_demo_pb2"
+        # @@protoc_insertion_point(class_scope:seismo.BiggestEventReply)
+    },
+)
+_sym_db.RegisterMessage(BiggestEventReply)
+
+BiggestEventOnRequest = _reflection.GeneratedProtocolMessageType(
+    "BiggestEventOnRequest",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _BIGGESTEVENTONREQUEST,
+        "__module__": "grpc_demo_pb2"
+        # @@protoc_insertion_point(class_scope:seismo.BiggestEventOnRequest)
+    },
+)
+_sym_db.RegisterMessage(BiggestEventOnRequest)
+
 
 DESCRIPTOR._options = None
 
@@ -133,8 +360,8 @@ _SEISMOSERVICE = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=None,
-    serialized_start=98,
-    serialized_end=181,
+    serialized_start=286,
+    serialized_end=533,
     methods=[
         _descriptor.MethodDescriptor(
             name="SeismoPing",
@@ -143,6 +370,24 @@ _SEISMOSERVICE = _descriptor.ServiceDescriptor(
             containing_service=None,
             input_type=_SEISMOPINGREQUEST,
             output_type=_SEISMOPINGREPLY,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name="BiggestEventInDays",
+            full_name="seismo.SeismoService.BiggestEventInDays",
+            index=1,
+            containing_service=None,
+            input_type=_BIGGESTEVENTINDAYSREQUEST,
+            output_type=_BIGGESTEVENTREPLY,
+            serialized_options=None,
+        ),
+        _descriptor.MethodDescriptor(
+            name="BiggestEventOn",
+            full_name="seismo.SeismoService.BiggestEventOn",
+            index=2,
+            containing_service=None,
+            input_type=_BIGGESTEVENTONREQUEST,
+            output_type=_BIGGESTEVENTREPLY,
             serialized_options=None,
         ),
     ],

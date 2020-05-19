@@ -13,6 +13,14 @@ class SeismoServer(grpc_demo_pb2_grpc.SeismoServiceServicer):
     def SeismoPing(self, request, context):
         return grpc_demo_pb2.SeismoPingReply(message=f"Hello, {request.name}!")
 
+    def BiggestEventInDays(self, request, context):
+        reply = grpc_demo_pb2.BiggestEventReply()
+        return reply
+
+    def BiggestEventOn(self, request, context):
+        reply = grpc_demo_pb2.BiggestEventReply()
+        return reply
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
