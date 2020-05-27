@@ -53,8 +53,7 @@ Demo gRPC project.
     1. Get biggest event that happened on 2020-01-21 [YYYY MM DD]
         ```
         $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll --day 2020 01 21
-
-```
+        ```
 
 # Build the gRPC server and haproxy images
 
