@@ -1,5 +1,6 @@
 from concurrent import futures
 import logging
+import socket
 
 import grpc
 
@@ -14,7 +15,7 @@ from obspy.clients.fdsn import Client
 
 class SeismoServer(grpc_demo_pb2_grpc.SeismoServiceServicer):
     def SeismoPing(self, request, context):
-        return grpc_demo_pb2.SeismoPingReply(message=f"Hello, {request.name}!")
+        return grpc_demo_pb2.SeismoPingReply(message=f"From {socket.gethostname() }Hello, {request.name}!")
 
     def BiggestEventInDays(self, request, context):
         starttime = UTCDateTime() - request.days * 24 * 60 * 60
@@ -55,9 +56,22 @@ class SeismoServer(grpc_demo_pb2_grpc.SeismoServiceServicer):
 
 
 def serve():
+    with open('server.key', 'rb') as f:
+        private_key = f.read()
+    with open('server.crt', 'rb') as f:
+        certificate_chain = f.read()
+        
+        
+    # create server credentials
+    server_credentials = grpc.ssl_server_credentials(
+     ((private_key, certificate_chain,),))
+    
+    
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=2))
     grpc_demo_pb2_grpc.add_SeismoServiceServicer_to_server(SeismoServer(), server)
     server.add_insecure_port("[::]:50051")
+    server.add_secure_port("[::]:50443", server_credentials)
+    
     server.start()
     server.wait_for_termination()
 

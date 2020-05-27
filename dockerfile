@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 # Update package list
 RUN apt-get update -y
+RUN apt-get install net-tools
 
 # Install Python and pip
 RUN apt-get install -y \
@@ -19,6 +20,7 @@ WORKDIR /data/grpc
 
 # Copy list of required Python modules
 COPY requirements.txt /data/grpc
+
 
 # Install required Python modules
 RUN pip3 install numpy

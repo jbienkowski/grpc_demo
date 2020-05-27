@@ -1,0 +1,10 @@
+FROM haproxy:2.1.4
+COPY haproxy.cfg /usr/local/etc/haproxy/haproxy.cfg
+# Prepare dir for the server
+RUN mkdir -p /certs
+WORKDIR /certs
+
+
+# Copy certs
+COPY server.crt /certs/server.crt
+COPY server.key /certs/server.key

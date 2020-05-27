@@ -1,0 +1,11 @@
+#!/bin/bash
+openssl req -newkey rsa:2048 -nodes -keyout server.key -x509 -days 365 -out server.crt -subj '/CN=localhost';
+
+cp server.crt server/server.crt;
+
+cp server.key server/server.key;
+
+cp server.crt client_python/server.crt;
+
+rm server.crt
+rm server.key

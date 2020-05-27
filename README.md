@@ -1,4 +1,4 @@
-# Introduction
+﻿# Introduction
 
 Demo gRPC project.
 
@@ -53,18 +53,47 @@ Demo gRPC project.
     1. Get biggest event that happened on 2020-01-21 [YYYY MM DD]
         ```
         $ dotnet client_csharp/bin/Debug/netcoreapp3.1/gRPC.dll --day 2020 01 21
-        ```
 
-# Dockerized server
+```
+
+# Build the gRPC server and haproxy images
 
 1. Build the gRPC server image using:
     ```
+    $ ./generate_keys
     $ docker build -t grpc .
     ```
-1. Run the gRPC server container using:
+2. Run the gRPC server container using:
     ```
-    $ docker run -d -p 127.0.0.1:50051:50051/tcp grpc:latest
+    $ cd haproxy
+    $ docker build -t my-haproxy .
     ```
+
+
+
+# Containers network setup
+
+1. Create dedicated network
+    1. Create grpc_demo network with 172.18.0.0/16 ipv4 address space:
+        ```
+        $ docker network create --subnet=172.18.0.0/16 grpc_demo
+        ```
+    2. Run the haproxy load balancer container using:
+        ```
+        $ docker run --net grpc_demo --ip 172.18.0.254 -d -p 127.0.0.1:50051:50051/tcp my-haproxy
+        ```
+    3. Run the gRPC secure server container using:
+        ```
+        $ docker run -d -p 127.0.0.1:50443:50443/tcp grpc:latest
+        ```
+    4. Run 3 backend servers containers using:
+        ```
+        $ docker run -d --net grpc_demo --ip 172.18.0.2 grpc:latest
+        $ docker run -d --net grpc_demo --ip 172.18.0.3 grpc:latest
+        $ docker run -d --net grpc_demo --ip 172.18.0.4 grpc:latest
+        ```
+        
+        
 
 # Dev and sidenotes
 
