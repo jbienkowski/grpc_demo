@@ -1,6 +1,7 @@
 from __future__ import print_function
 import argparse
 import logging
+import socket
 
 import grpc
 
@@ -10,6 +11,14 @@ from grpc_classes import grpc_demo_pb2_grpc
 
 def ping():
     with grpc.insecure_channel("127.0.0.1:50051") as channel:
+        stub = grpc_demo_pb2_grpc.SeismoServiceStub(channel)
+        reply = stub.SeismoPing(grpc_demo_pb2.SeismoPingRequest(name="Python Client"))
+    print(reply.message)
+    
+def sping():
+    with open('client_python/server.crt', 'rb') as f:
+        creds = grpc.ssl_channel_credentials(f.read())
+    with grpc.secure_channel("localhost:50443",creds) as channel:
         stub = grpc_demo_pb2_grpc.SeismoServiceStub(channel)
         reply = stub.SeismoPing(grpc_demo_pb2.SeismoPingRequest(name="Python Client"))
     print(reply.message)
@@ -41,6 +50,8 @@ if __name__ == "__main__":
     logging.basicConfig()
     parser = argparse.ArgumentParser(description="Access to the SeismoServer.")
     parser.add_argument("--ping", help="pings the server", action="store_true")
+    parser.add_argument("--sping", help="pings the server using SSL encryption", action="store_true")
+
     parser.add_argument(
         "--past", dest="past", type=int, help="show biggest event from past X days"
     )
@@ -53,7 +64,9 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-
+    if args.sping:
+        sping()
+    
     if args.ping:
         ping()
 
